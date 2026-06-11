@@ -1,7 +1,7 @@
 [project]
 name = "lab-githubactions-srobles"
 version = "0.1.0"
-description = "Add your description here"
+description = "AWS Lambda hello API — a lab for learning GitHub Actions, by Sergio Robles"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
