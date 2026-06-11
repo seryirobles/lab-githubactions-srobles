@@ -23,7 +23,7 @@ def lambda_handler(event, context):
     try:
         return {
             "statusCode": 200,
-            "body": json.dumps({"response":"hello from terraform lab!"}),
+            "body": json.dumps({"response":"hello from GitHub Actions lab!"}),
         }
     except Exception:
         logger.exception("Unexpected server error")
