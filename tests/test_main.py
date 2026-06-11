@@ -2,7 +2,7 @@ import json
 
 from lambda_function import lambda_handler
 
-HELLO = "hello from terraform lab!"
+HELLO = "hello from GitHub Actions lab!"
 
 
 def _body(response):
