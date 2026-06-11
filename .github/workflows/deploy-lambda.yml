@@ -16,6 +16,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Setup uv"
       - uses: actions/checkout@v6
       - uses: ./.github/actions/uv-setup
       - name: Run tests
@@ -26,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test]
     steps:
+      - run: echo "Building lambda zip"
       - uses: actions/checkout@v6
       - name: Build zip
         run: zip function.zip lambda_function.py
@@ -38,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
+      - run: echo "Authenticating to AWS"
       - name: Auth AWS
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -50,6 +53,6 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: lambda-package
-
+      - run: echo "Deploying $LAMBDA_FUNCTION_NAME to region $AWS_REGION"
       - name: Push to AWS
         run: aws lambda update-function-code --function-name $LAMBDA_FUNCTION_NAME --zip-file fileb://function.zip
